@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CryptoTracker - Programmatic SEO & SSR Dashboard
 
-## Getting Started
+A high-performance, SEO-optimized cryptocurrency dashboard built with **Next.js 16**, **Shadcn UI**, and **Tailwind CSS**. This project demonstrates advanced Server-Side Rendering (SSR) patterns and Programmatic SEO best practices.
 
-First, run the development server:
+## 🚀 Live Demo
+
+[Insert Your Vercel URL Here]
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **Styling**: Tailwind CSS + Shadcn UI
+- **Data Source**: CoinGecko API
+- **Charts**: Recharts
+- **Icons**: Lucide React
+- **Deployment**: Vercel
+
+## 📑 Features
+
+- **Real-time SSR**: Utilizes `cache: 'no-store'` for all data fetching to ensure users always see the latest market prices, satisfying the requirement for Server-Side Rendering.
+- **Programmatic SEO**: Automatically generates unique pages for the top 20 cryptocurrencies.
+- **Dynamic Metadata**: Each coin page features custom title tags and meta descriptions generated on-the-fly.
+- **Structured Data**: Implements JSON-LD (FinancialProduct schema) to enable Google Rich Snippets.
+- **Responsive Design**: Fully mobile-optimized dashboard using Shadcn UI's grid and table systems.
+- **UX Polish**: Includes Skeleton loaders for smooth data transition and global error boundaries.
+
+## 📈 SEO Implementation
+
+- **JSON-LD**: Structured data is injected into every dynamic route to help search engines understand the financial context of the page.
+- **OpenGraph**: Custom OG tags are implemented to ensure rich previews when sharing coin links on social media.
+- **SSR Justification**: SSR was chosen over SSG because cryptocurrency prices are highly volatile; static generation would result in stale data.
+
+## 🏁 Getting Started
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone <your-repo-url>
+    ```
+
+2. **Install dependencies:**
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Run the development server:**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm dev
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
 
-## Learn More
+Open [http://localhost:3000](https://www.google.com/search?q=http://localhost:3000) to see the result.
 
-To learn more about Next.js, take a look at the following resources:
+## 🧠 Architectural Decisions
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Root Directory Structure**: Opted for a root-level `app/` directory to maximize visibility and simplify imports.
+- **Client vs. Server Components**: Kept the majority of the application as Server Components for performance, isolating only the charting logic (`PriceChart.tsx`) as a Client Component.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **3. Run the git commands:**
 
-## Deploy on Vercel
+```bash
+git add .
+git commit -m "docs: add comprehensive readme with architectural and seo documentation"
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```

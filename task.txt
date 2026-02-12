@@ -1,0 +1,106 @@
+Software Dev Intern - Assessment
+​
+Project Overview:
+Your task is to create a server-side rendered (SSR) React-based website using
+Next.js. The website should be designed for SEO optimization, with programmatic
+SEO pages that are generated dynamically based on the data you select. The
+website should look beautiful and adhere to SEO best practices such as using
+JSON-LD schema, SEO-friendly titles and descriptions, and OpenGraph metadata.
+You will need to:
+1.​ Choose a type of data (e.g., sports, finance, etc.).
+2.​ Use that data to create SEO-friendly pages.
+3.​ Perform keyword research and apply SEO best practices.
+4.​ Ensure that the website is server-side rendered for SEO purposes.
+5.​ Deploy the site on Vercel, Netlify, or another platform.
+6.​ Share a public Git repository and provide a Loom video walkthrough.
+Assessment Tasks:
+1. Project Setup
+●​ Objective: Set up the project using Next.js to enable server-side rendering
+(SSR) for SEO optimization.
+●​ Deliverables:
+○​ Create a Next.js project setup with React, ensuring server-side
+rendering (SSR) is configured correctly for SEO optimization.
+○​Organize your project with appropriate folder structures for
+components, pages, and assets.
+2. Data Selection
+●​ Objective: Research and choose a type of data that you will use to generate
+programmatic SEO pages.
+●​ Deliverables:
+○​ Provide a brief explanation of the data you chose (e.g., sports
+statistics, financial data, etc.).
+○​ Find a source for your data (public APIs, datasets, or other
+resources).
+○​ Describe how the data is structured and how you will use it to
+generate dynamic pages.
+3. SEO Optimization & Keyword Research
+●​ Objective: Conduct keyword research and implement SEO best practices.
+●​ Deliverables:
+○​ Research relevant keywords for the data you’ve selected (e.g.,
+“soccer player stats,” “stock market data”).
+○​ Use tools like Google Keyword Planner or Ubersuggest to identify
+keywords.
+○​ Explain the research process and how you selected your target
+keywords.
+○​ Implement SEO best practices like using proper meta tags, titles,
+descriptions, and OpenGraph tags for social media sharing.​
+4. Building Programmatic SEO Pages with SSR
+●​ Objective: Create server-side rendered pages using Next.js and dynamic
+data.
+●​ Deliverables:
+○​ Use Next.js’ getServerSideProps to fetch data on the server and
+render pages with SEO optimization.
+○​ Generate at least 3 SEO-friendly pages based on the data (e.g.,
+player profiles for sports data, stock reports for financial data).
+○​ Include SEO features such as:
+■​ Dynamic title and description tags.
+■​ Use JSON-LD schema to structure data in a machine-readable
+format.
+■​ Implement OpenGraph metadata for social media optimization
+(e.g., title, image, description).
+■​ Ensure pages are properly indexed by search engines with
+proper meta tags.
+5. Design and UI/UX
+●​ Objective: Build a clean, visually appealing UI that’s also SEO-friendly.
+●​ Deliverables:
+○​ Create a responsive and user-friendly UI for displaying the data (e.g.,
+tables, cards, charts).
+○​ Ensure the design is mobile-friendly, with proper accessibility
+considerations.
+○​ Implement client-side features like filtering or pagination if necessary
+to improve the user experience.
+6. Deployment
+●​ Objective: Deploy the website on a cloud platform like Vercel, Netlify, or
+any similar service.
+●​ Deliverables:
+○​ Deploy the site to Vercel, Netlify, or any cloud hosting service.
+○​ Provide the live URL for us to review and test the application.
+7. Testing and Debugging
+●​ Objective: Ensure that the pages load correctly and are SEO-optimized.
+●​ Deliverables:
+○​ Test the website to ensure it renders correctly with server-side data.
+○​ Use tools like Google’s Lighthouse to check the SEO score and
+performance of your site.
+○​ Debug and resolve any issues related to rendering, SEO, or
+performance.
+Required Deliverables:
+To be considered for an interview, please submit the following:
+1.​ Git Repository:​
+Share a public Git repository URL with the complete code for your project.
+Ensure that the code is properly organized, and include clear instructions
+for running the application locally.
+2.​ Hosted Application:​
+Deploy your website to Vercel, Netlify, or another cloud platform and
+provide the URL where we can access and test the live application.
+3.​ Loom Video Walkthrough:​
+Record a Loom video where you walk us through the project. In the video,
+please:
+○​ Explain the data you chose and why you selected it.
+○​ Show how you’ve used server-side rendering in Next.js to generate
+dynamic SEO pages.
+○​ Walk through your keyword research process and how you applied it
+to the pages.
+○​ Explain how you implemented SEO features such as titles,
+descriptions, JSON-LD schema, and OpenGraph metadata.
+○​ Discuss any challenges you faced during development and how you
+overcame them.
+○​ Explain any key architectural or design decisions.​

@@ -1,26 +1,68 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@layer utilities {
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@theme {
+  --color-background: #0f1419;
+  --color-foreground: #c9d1d9;
+
+  --color-card: #161b22;
+  --color-card-foreground: #c9d1d9;
+
+  --color-popover: #161b22;
+  --color-popover-foreground: #c9d1d9;
+
+  --color-primary: #58a6ff;
+  --color-primary-foreground: #0d1117;
+
+  --color-secondary: #21262d;
+  --color-secondary-foreground: #c9d1d9;
+
+  --color-muted: #21262d;
+  --color-muted-foreground: #8b949e;
+
+  --color-accent: #21262d;
+  --color-accent-foreground: #c9d1d9;
+
+  --color-destructive: #f85149;
+  --color-destructive-foreground: #ffffff;
+
+  --color-border: #30363d;
+  --color-input: #30363d;
+  --color-ring: #58a6ff;
+
+  --color-chart-1: #58a6ff;
+  --color-chart-2: #56d364;
+  --color-chart-3: #d29922;
+  --color-chart-4: #bc8cff;
+  --color-chart-5: #ff7b72;
+
+  --radius-lg: 0.5rem;
+  --radius-md: 0.375rem;
+  --radius-sm: 0.25rem;
 }
