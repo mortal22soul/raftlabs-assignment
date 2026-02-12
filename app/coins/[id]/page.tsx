@@ -128,9 +128,9 @@ export default async function CoinPage({ params }: { params: { id: string } }) {
   ];
 
   return (
-    <main className="container mx-auto md:px-10 py-10 space-y-6">
+    <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10 space-y-6">
       {/* HEADER: Identity & Rank */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3 sm:gap-4">
         <Image
           src={
             typeof coin.image === "string"
@@ -138,35 +138,41 @@ export default async function CoinPage({ params }: { params: { id: string } }) {
               : (coin.image as { large: string }).large
           }
           alt={coin.name}
-          width={64}
-          height={64}
-          className="h-16 w-16 rounded-full"
+          width={56}
+          height={56}
+          className="h-12 w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 rounded-full"
         />
-        <div>
-          <h1 className="text-4xl font-bold">{coin.name}</h1>
-          <div className="flex gap-2 mt-2">
-            <Badge variant="secondary" className="uppercase font-bold">
+        <div className="min-w-0 flex-1">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold truncate">
+            {coin.name}
+          </h1>
+          <div className="flex gap-2 mt-1.5 sm:mt-2 flex-wrap">
+            <Badge variant="secondary" className="uppercase font-bold text-xs">
               {coin.symbol}
             </Badge>
-            <Badge variant="outline">Rank #{coin.market_cap_rank}</Badge>
+            <Badge variant="outline" className="text-xs">
+              Rank #{coin.market_cap_rank}
+            </Badge>
           </div>
         </div>
       </div>
 
       {/* GRID LAYOUT */}
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-4 sm:gap-6 md:grid-cols-3">
         {/* CHART CARD (Spans 2 columns) */}
         <Card className="md:col-span-2">
-          <CardHeader>
-            <CardTitle>Price Performance (7d)</CardTitle>
-            <CardDescription>
+          <CardHeader className="pb-3 sm:pb-6">
+            <CardTitle className="text-lg sm:text-xl">
+              Price Performance (7d)
+            </CardTitle>
+            <CardDescription className="text-sm">
               Current Price:{" "}
-              <span className="font-mono text-foreground font-bold text-lg">
+              <span className="font-mono text-foreground font-bold text-base sm:text-lg">
                 {formatCurrency(coin.market_data.current_price.usd)}
               </span>
             </CardDescription>
           </CardHeader>
-          <CardContent className="pl-0">
+          <CardContent className="pl-0 pr-4 sm:pr-6">
             {/* Client-Side Chart Component */}
             <PriceChart
               data={coin.market_data.sparkline_7d.price}
@@ -181,37 +187,47 @@ export default async function CoinPage({ params }: { params: { id: string } }) {
 
         {/* STATS CARD (Spans 1 column) */}
         <Card>
-          <CardHeader>
-            <CardTitle>Market Stats</CardTitle>
+          <CardHeader className="pb-3 sm:pb-6">
+            <CardTitle className="text-lg sm:text-xl">Market Stats</CardTitle>
           </CardHeader>
-          <CardContent className="grid gap-4">
-            <div className="flex justify-between items-center border-b pb-2">
-              <span className="text-muted-foreground">Market Cap</span>
-              <span className="font-mono font-medium">
+          <CardContent className="grid gap-3 sm:gap-4">
+            <div className="flex justify-between items-center border-b border-border/50 pb-2">
+              <span className="text-xs sm:text-sm text-muted-foreground">
+                Market Cap
+              </span>
+              <span className="font-mono font-medium text-xs sm:text-sm truncate ml-2">
                 {formatCurrency(coin.market_data.market_cap.usd)}
               </span>
             </div>
-            <div className="flex justify-between items-center border-b pb-2">
-              <span className="text-muted-foreground">24h High</span>
-              <span className="font-mono font-medium text-emerald-400">
+            <div className="flex justify-between items-center border-b border-border/50 pb-2">
+              <span className="text-xs sm:text-sm text-muted-foreground">
+                24h High
+              </span>
+              <span className="font-mono font-medium text-emerald-400 text-xs sm:text-sm">
                 {formatCurrency(coin.market_data.high_24h.usd)}
               </span>
             </div>
-            <div className="flex justify-between items-center border-b pb-2">
-              <span className="text-muted-foreground">24h Low</span>
-              <span className="font-mono font-medium text-rose-400">
+            <div className="flex justify-between items-center border-b border-border/50 pb-2">
+              <span className="text-xs sm:text-sm text-muted-foreground">
+                24h Low
+              </span>
+              <span className="font-mono font-medium text-rose-400 text-xs sm:text-sm">
                 {formatCurrency(coin.market_data.low_24h.usd)}
               </span>
             </div>
-            <div className="flex justify-between items-center border-b pb-2">
-              <span className="text-muted-foreground">Volume (24h)</span>
-              <span className="font-mono font-medium">
+            <div className="flex justify-between items-center border-b border-border/50 pb-2">
+              <span className="text-xs sm:text-sm text-muted-foreground">
+                Volume (24h)
+              </span>
+              <span className="font-mono font-medium text-xs sm:text-sm truncate ml-2">
                 {formatCompactNumber(coin.market_data.total_volume.usd)}
               </span>
             </div>
             <div className="flex justify-between items-center pb-2">
-              <span className="text-muted-foreground">Circulating Supply</span>
-              <span className="font-mono font-medium">
+              <span className="text-xs sm:text-sm text-muted-foreground">
+                Circulating Supply
+              </span>
+              <span className="font-mono font-medium text-xs sm:text-sm truncate ml-2">
                 {formatCompactNumber(coin.market_data.circulating_supply)}{" "}
                 {coin.symbol.toUpperCase()}
               </span>
@@ -222,12 +238,14 @@ export default async function CoinPage({ params }: { params: { id: string } }) {
 
       {/* DESCRIPTION CARD (Critical for SEO Content Depth) */}
       <Card>
-        <CardHeader>
-          <CardTitle>About {coin.name}</CardTitle>
+        <CardHeader className="pb-3 sm:pb-6">
+          <CardTitle className="text-lg sm:text-xl">
+            About {coin.name}
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <div
-            className="prose prose-slate dark:prose-invert max-w-none text-muted-foreground"
+            className="prose prose-sm sm:prose prose-slate dark:prose-invert max-w-none text-muted-foreground [&_a]:text-primary [&_a]:no-underline hover:[&_a]:underline"
             // We use dangerouslySetInnerHTML because the API returns HTML links
             dangerouslySetInnerHTML={{
               __html: coin.description.en || "No description available.",

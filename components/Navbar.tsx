@@ -7,11 +7,11 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export function Navbar() {
   return (
-    <header className="sticky px-10 top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
-      <div className="container flex h-14 max-w-screen-2xl items-center">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
+      <div className="container flex h-14 max-w-screen-2xl items-center px-4 sm:px-6 lg:px-8">
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <Monitor className="h-6 w-6" />
+            <Monitor className="h-5 w-5 sm:h-6 sm:w-6" />
             <span className="hidden font-bold sm:inline-block">
               CryptoTracker
             </span>
@@ -38,14 +38,14 @@ export function Navbar() {
               <span className="sr-only">Toggle Menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="pr-0">
-            <div className="px-7">
+          <SheetContent side="left" className="pr-0 w-[280px] sm:w-[320px]">
+            <div className="px-6">
               <Link href="/" className="flex items-center">
-                <Monitor className="mr-2 h-4 w-4" />
+                <Monitor className="mr-2 h-5 w-5" />
                 <span className="font-bold">CryptoTracker</span>
               </Link>
             </div>
-            <nav className="flex flex-col gap-4 px-7 mt-8 text-sm font-medium">
+            <nav className="flex flex-col gap-4 px-6 mt-8 text-sm font-medium">
               <Link
                 href="https://github.com/mortal22soul/raftlabs-assignment"
                 target="_blank"
@@ -59,7 +59,10 @@ export function Navbar() {
           </SheetContent>
         </Sheet>
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-          <div className="w-full flex-1 md:w-auto md:flex-none"></div>
+          <Link href="/" className="flex md:hidden items-center space-x-2">
+            <Monitor className="h-5 w-5" />
+            <span className="font-bold text-sm">CryptoTracker</span>
+          </Link>
         </div>
       </div>
     </header>

@@ -23,7 +23,6 @@ export const getMarketData = async (): Promise<Coin[]> => {
 
 // 2. Fetch detailed data for a specific coin (Programmatic SEO Page)
 export const getCoinDetail = async (id: string): Promise<CoinDetail> => {
-  console.log(id);
   return fetchAPI<CoinDetail>(
     `/coins/${id}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=true&x_cg_demo_api_key=${process.env.API_KEY}`,
   );
