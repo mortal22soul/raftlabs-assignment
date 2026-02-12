@@ -1,6 +1,7 @@
 import { getCoinDetail } from "@/lib/api";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import {
   Card,
   CardContent,
@@ -9,9 +10,19 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import PriceChart from "@/components/charts/PriceChart";
 import { Metadata } from "next";
 import { formatCurrency, formatCompactNumber } from "@/lib/utils";
+
+// Dynamic import for PriceChart to reduce initial bundle size
+const PriceChart = dynamic(() => import("@/components/charts/PriceChart"), {
+  loading: () => (
+    <div className="h-[350px] w-full flex items-center justify-center">
+      <div className="animate-pulse text-muted-foreground text-sm">
+        Loading chart...
+      </div>
+    </div>
+  ),
+});
 
 // Dynamic Metadata Generation for Programmatic SEO
 export async function generateMetadata({

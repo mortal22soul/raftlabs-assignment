@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { Monitor, Menu, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
