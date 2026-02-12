@@ -1,13 +1,13 @@
+"use server";
+
 import { Coin, CoinDetail } from "@/types";
 
-// Helper for consistent fetching with error handling
 async function fetchAPI<T>(endpoint: string): Promise<T> {
   const res = await fetch(`${process.env.BASE_URL}${endpoint}`, {
-    cache: "no-store", // CRITICAL: This ensures fresh data on every request (SSR)
+    next: { revalidate: 60 }, // Revalidate every minute (ISR)
   });
 
   if (!res.ok) {
-    // In production, you might want to log this error to a service like Sentry
     throw new Error(`Failed to fetch data: ${res.statusText}`);
   }
 

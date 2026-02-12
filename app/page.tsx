@@ -1,8 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, ArrowDownRight } from "lucide-react";
 import { Metadata } from "next";
 import { getMarketData } from "@/lib/api";
+import { ArrowUpRight, ArrowDownRight } from "lucide-react";
+import { SearchCommand } from "@/components/SearchCommand";
+import { RefreshButton } from "@/components/RefreshButton";
+import { formatCurrency, formatCompactNumber } from "@/lib/utils";
 import {
   Table,
   TableBody,
@@ -11,9 +14,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { SearchCommand } from "@/components/SearchCommand";
-import { RefreshButton } from "@/components/RefreshButton";
-import { formatCurrency, formatCompactNumber } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "CryptoTracker - Real-time Crypto Prices & Market Data",
@@ -28,7 +28,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Dashboard() {
-  // SSR Fetch (runs on every request because of cache: 'no-store' in api.ts)
   const coins = await getMarketData();
 
   // JSON-LD for WebSite
@@ -40,7 +39,7 @@ export default async function Dashboard() {
     potentialAction: {
       "@type": "SearchAction",
       target:
-        "https://raftlabs-assignment-sage.vercel.app/?q={search_term_string}",
+        "https://raftlabs-assignment-sage.vercel.app?q={search_term_string}",
       "query-input": "required name=search_term_string",
     },
   };
