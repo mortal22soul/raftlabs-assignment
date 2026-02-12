@@ -128,7 +128,7 @@ export default async function CoinPage({ params }: { params: { id: string } }) {
   ];
 
   return (
-    <main className="container mx-auto py-10 space-y-6">
+    <main className="container mx-auto md:px-10 py-10 space-y-6">
       {/* HEADER: Identity & Rank */}
       <div className="flex items-center gap-4">
         <Image

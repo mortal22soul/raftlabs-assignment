@@ -34,7 +34,7 @@ export default async function Dashboard() {
 
   return (
     <main className="flex flex-col items-center">
-      <div className="container mx-auto py-10" id="market-table">
+      <div className="container mx-auto md:px-10 py-10" id="market-table">
         <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
           <div>
             <h2 className="text-3xl font-bold tracking-tight">
