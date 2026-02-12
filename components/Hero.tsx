@@ -38,7 +38,10 @@ export function Hero() {
               Explore Markets <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </Link>
-          <Link href="https://github.com/mortal22soul/" target="_blank">
+          <Link
+            href="https://github.com/mortal22soul/raftlabs-assignment"
+            target="_blank"
+          >
             <Button
               variant="outline"
               size="lg"

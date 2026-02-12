@@ -18,7 +18,7 @@ export function Navbar() {
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
             <Link
-              href="https://github.com/mortal22soul/"
+              href="https://github.com/mortal22soul/raftlabs-assignment"
               target="_blank"
               rel="noreferrer"
               className="transition-colors hover:text-foreground/80 text-foreground/60"
@@ -47,7 +47,7 @@ export function Navbar() {
             </div>
             <nav className="flex flex-col gap-4 px-7 mt-8 text-sm font-medium">
               <Link
-                href="https://github.com/mortal22soul/"
+                href="https://github.com/mortal22soul/raftlabs-assignment"
                 target="_blank"
                 rel="noreferrer"
                 className="transition-colors hover:text-foreground/80 text-foreground/60 flex items-center gap-2"
