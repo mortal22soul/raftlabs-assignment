@@ -23,11 +23,11 @@ export default async function Dashboard() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "CryptoTracker",
-    url: "https://crypto-tracker-raftlabs.vercel.app",
+    url: "https://raftlabs-assignment-sage.vercel.app",
     potentialAction: {
       "@type": "SearchAction",
       target:
-        "https://crypto-tracker-raftlabs.vercel.app/?q={search_term_string}",
+        "https://raftlabs-assignment-sage.vercel.app/?q={search_term_string}",
       "query-input": "required name=search_term_string",
     },
   };

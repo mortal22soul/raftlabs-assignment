@@ -37,7 +37,7 @@ export async function generateMetadata({
     title: `${name} (${coin.symbol.toUpperCase()}) Live Price, Charts & Market Cap`,
     description: `Stay updated with the latest ${name} price, which is currently ${price}. View historical charts, market capitalization, and detailed project information.`,
     alternates: {
-      canonical: `https://crypto-tracker-raftlabs.vercel.app/coins/${id}`,
+      canonical: `https://raftlabs-assignment-sage.vercel.app/coins/${id}`,
     },
     openGraph: {
       title: `${name} Live Price & Analysis`,

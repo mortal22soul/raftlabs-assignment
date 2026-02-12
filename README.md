@@ -4,7 +4,7 @@ A high-performance, SEO-optimized cryptocurrency dashboard built with **Next.js 
 
 ## 🚀 Live Demo
 
-[Insert Your Vercel URL Here]
+https://raftlabs-assignment-sage.vercel.app/
 
 ## 🛠️ Tech Stack
 
@@ -35,8 +35,8 @@ A high-performance, SEO-optimized cryptocurrency dashboard built with **Next.js 
 1. **Clone the repository:**
 
    ```bash
-   git clone <your-repo-url>
-    ```
+   git clone https://github.com/mortal22soul/raftlabs-assignment
+   ```
 
 2. **Install dependencies:**
 

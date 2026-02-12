@@ -21,11 +21,11 @@ export const metadata: Metadata = {
   },
   description:
     "Track live cryptocurrency prices, market charts, and historical data with our high-performance, server-side rendered dashboard.",
-  metadataBase: new URL("https://crypto-tracker-raftlabs.vercel.app"),
+  metadataBase: new URL("https://raftlabs-assignment-sage.vercel.app"),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://crypto-tracker-raftlabs.vercel.app",
+    url: "https://raftlabs-assignment-sage.vercel.app",
     title: "CryptoTracker",
     description: "Real-time Crypto Prices & Market Insights",
     siteName: "CryptoTracker",
