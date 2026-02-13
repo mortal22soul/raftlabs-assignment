@@ -1,12 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone", // Optimized for Docker deployment
+  // output: "standalone", // for docker
   images: {
     remotePatterns: [
       {
         protocol: "https",
         hostname: "coin-images.coingecko.com",
+        pathname: "/**",
       },
     ],
   },

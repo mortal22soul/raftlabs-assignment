@@ -34,7 +34,7 @@ export function Navbar() {
               <span className="sr-only">Toggle Menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="pr-0 w-[280px] sm:w-[320px]">
+          <SheetContent side="left" className="pr-0 w-70 sm:w-[320px]">
             <div className="px-6">
               <Link href="/" className="flex items-center">
                 <Bitcoin className="mr-2 h-5 w-5" />

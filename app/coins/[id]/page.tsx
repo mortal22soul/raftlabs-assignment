@@ -12,6 +12,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Metadata } from "next";
 import { formatCurrency, formatCompactNumber } from "@/lib/utils";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 // Dynamic import for PriceChart to reduce initial bundle size
 const PriceChart = dynamic(() => import("@/components/charts/PriceChart"), {
@@ -95,7 +96,7 @@ export default async function CoinPage({ params }: { params: { id: string } }) {
       "@context": "https://schema.org",
       "@type": "FinancialProduct",
       name: coin.name,
-      description: coin.description.en.split(".")[0] + ".", // First sentence for clarity
+      description: coin.description.en.split(".")[0] + ".",
       image:
         typeof coin.image === "string"
           ? coin.image
@@ -140,6 +141,12 @@ export default async function CoinPage({ params }: { params: { id: string } }) {
 
   return (
     <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10 space-y-6">
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: coin.name, active: true },
+        ]}
+      />
       {/* HEADER: Identity & Rank */}
       <div className="flex items-center gap-3 sm:gap-4">
         <Image
@@ -248,22 +255,24 @@ export default async function CoinPage({ params }: { params: { id: string } }) {
       </div>
 
       {/* DESCRIPTION CARD (Critical for SEO Content Depth) */}
-      <Card>
-        <CardHeader className="pb-3 sm:pb-6">
-          <CardTitle className="text-lg sm:text-xl">
-            About {coin.name}
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div
-            className="prose prose-sm sm:prose prose-slate dark:prose-invert max-w-none text-muted-foreground [&_a]:text-primary [&_a]:no-underline hover:[&_a]:underline"
-            // We use dangerouslySetInnerHTML because the API returns HTML links
-            dangerouslySetInnerHTML={{
-              __html: coin.description.en || "No description available.",
-            }}
-          />
-        </CardContent>
-      </Card>
+      <section aria-labelledby="about-heading">
+        <Card>
+          <CardHeader className="pb-3 sm:pb-6">
+            <CardTitle id="about-heading" className="text-lg sm:text-xl">
+              About {coin.name}
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div
+              className="prose prose-sm sm:prose prose-slate dark:prose-invert max-w-none text-muted-foreground [&_a]:text-primary [&_a]:no-underline hover:[&_a]:underline"
+              // We use dangerouslySetInnerHTML because the API returns HTML links
+              dangerouslySetInnerHTML={{
+                __html: coin.description.en || "No description available.",
+              }}
+            />
+          </CardContent>
+        </Card>
+      </section>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

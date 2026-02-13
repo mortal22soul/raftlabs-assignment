@@ -22,6 +22,12 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  applicationName: "CryptoTracker",
+
+  referrer: "origin-when-cross-origin",
+
+  creator: "Aryan",
+
   metadataBase: new URL("https://raftlabs-assignment-sage.vercel.app"),
 
   title: {
@@ -82,7 +88,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
         <Navbar />
