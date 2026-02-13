@@ -79,6 +79,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
+      <meta
+        name="google-site-verification"
+        content="_uWF6CDqz6aR_Ajx0cN0KhPh-i4orjCa9lu_hKYEvg0"
+      />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
         <Navbar />
