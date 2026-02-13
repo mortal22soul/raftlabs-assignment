@@ -1,7 +1,8 @@
 import { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/constants";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = "https://raftlabs-assignment-sage.vercel.app";
+  const baseUrl = SITE_URL;
 
   return {
     rules: {

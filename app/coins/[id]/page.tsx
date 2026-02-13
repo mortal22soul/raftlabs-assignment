@@ -13,6 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { Metadata } from "next";
 import { formatCurrency, formatCompactNumber } from "@/lib/utils";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { SITE_URL, SITE_NAME } from "@/lib/constants";
 
 // Dynamic import for PriceChart to reduce initial bundle size
 const PriceChart = dynamic(() => import("@/components/charts/PriceChart"), {
@@ -36,7 +37,7 @@ export async function generateMetadata({
 
   if (!coin) {
     return {
-      title: "Coin Not Found | CryptoTracker",
+      title: `Coin Not Found | ${SITE_NAME}`,
       description:
         "The requested cryptocurrency information could not be found.",
     };
@@ -91,7 +92,6 @@ export default async function CoinPage({ params }: { params: { id: string } }) {
   }
 
   // JSON-LD Structured Data — rich-result-eligible types
-  const siteUrl = "https://raftlabs-assignment-sage.vercel.app";
   const coinImage =
     typeof coin.image === "string"
       ? coin.image
@@ -111,13 +111,13 @@ export default async function CoinPage({ params }: { params: { id: string } }) {
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: `${siteUrl}/`,
+            item: `${SITE_URL}/`,
           },
           {
             "@type": "ListItem",
             position: 2,
             name: coin.name,
-            item: `${siteUrl}/coins/${id}`,
+            item: `${SITE_URL}/coins/${id}`,
           },
         ],
       },
@@ -126,25 +126,25 @@ export default async function CoinPage({ params }: { params: { id: string } }) {
         headline: `${coin.name} (${coin.symbol.toUpperCase()}) — Live Price & Market Data`,
         description: shortDescription,
         image: coinImage,
-        url: `${siteUrl}/coins/${id}`,
+        url: `${SITE_URL}/coins/${id}`,
         author: {
           "@type": "Organization",
-          name: "CryptoTracker",
-          url: siteUrl,
+          name: SITE_NAME,
+          url: SITE_URL,
         },
         publisher: {
           "@type": "Organization",
-          name: "CryptoTracker",
-          url: siteUrl,
+          name: SITE_NAME,
+          url: SITE_URL,
           logo: {
             "@type": "ImageObject",
-            url: `${siteUrl}/favicon.ico`,
+            url: `${SITE_URL}/favicon.ico`,
           },
         },
         dateModified: new Date().toISOString(),
         mainEntityOfPage: {
           "@type": "WebPage",
-          "@id": `${siteUrl}/coins/${id}`,
+          "@id": `${SITE_URL}/coins/${id}`,
         },
       },
     ],

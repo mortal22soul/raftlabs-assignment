@@ -1,6 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import {
+  SITE_URL,
+  SITE_NAME,
+  SITE_DESCRIPTION,
+  CREATOR,
+} from "@/lib/constants";
 
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -22,21 +28,20 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  applicationName: "CryptoTracker",
+  applicationName: SITE_NAME,
 
   referrer: "origin-when-cross-origin",
 
-  creator: "Aryan Mehesare",
+  creator: CREATOR,
 
   title: {
-    default: "CryptoTracker - Real-time Crypto Prices and Market Insights",
-    template: "%s | CryptoTracker",
+    default: `${SITE_NAME} - Real-time Crypto Prices and Market Insights`,
+    template: `%s | ${SITE_NAME}`,
   },
 
-  description:
-    "Track live cryptocurrency prices, market charts, and historical data with our high-performance, server-side rendered dashboard.",
+  description: SITE_DESCRIPTION,
 
-  metadataBase: new URL("https://raftlabs-assignment-sage.vercel.app"),
+  metadataBase: new URL(SITE_URL),
 
   alternates: {
     canonical: "/",
@@ -53,17 +58,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "/",
-    siteName: "CryptoTracker",
-    title: "CryptoTracker - Real-time Crypto Prices and Market Insights",
-    description:
-      "Track live cryptocurrency prices, market charts, and historical data with our high-performance, server-side rendered dashboard.",
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} - Real-time Crypto Prices and Market Insights`,
+    description: SITE_DESCRIPTION,
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "CryptoTracker - Real-time Crypto Prices and Market Insights",
-    description:
-      "Track live cryptocurrency prices, market charts, and historical data with our high-performance, server-side rendered dashboard.",
+    title: `${SITE_NAME} - Real-time Crypto Prices and Market Insights`,
+    description: SITE_DESCRIPTION,
   },
 
   verification: {

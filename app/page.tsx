@@ -6,6 +6,7 @@ import { SearchCommand } from "@/components/SearchCommand";
 import { RefreshButton } from "@/components/RefreshButton";
 import { formatCurrency, formatCompactNumber } from "@/lib/utils";
 import { Hero } from "@/components/Hero";
+import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/lib/constants";
 import {
   Table,
   TableBody,
@@ -19,27 +20,25 @@ export default async function Dashboard() {
   const coins = await getMarketData();
 
   // JSON-LD Structured Data
-  const siteUrl = "https://raftlabs-assignment-sage.vercel.app";
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "WebSite",
-        name: "CryptoTracker",
-        url: siteUrl,
-        description:
-          "Track live cryptocurrency prices, market caps, and 24h performance for the top digital assets.",
+        name: SITE_NAME,
+        url: SITE_URL,
+        description: SITE_DESCRIPTION,
       },
       {
         "@type": "CollectionPage",
         name: "Market Overview — Top Cryptocurrencies by Market Cap",
         description:
           "Live prices and performance for the top 20 cryptocurrency assets.",
-        url: siteUrl,
+        url: SITE_URL,
         isPartOf: {
           "@type": "WebSite",
-          name: "CryptoTracker",
-          url: siteUrl,
+          name: SITE_NAME,
+          url: SITE_URL,
         },
         mainEntity: {
           "@type": "ItemList",
@@ -48,7 +47,7 @@ export default async function Dashboard() {
             "@type": "ListItem",
             position: i + 1,
             name: coin.name,
-            url: `${siteUrl}/coins/${coin.id}`,
+            url: `${SITE_URL}/coins/${coin.id}`,
           })),
         },
       },
@@ -60,7 +59,8 @@ export default async function Dashboard() {
       <Hero />
       <div
         className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10"
-        id="market-table">
+        id="market-table"
+      >
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
           <div className="w-full md:w-auto">
             <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
@@ -102,7 +102,8 @@ export default async function Dashboard() {
                       <TableCell className="min-w-35">
                         <Link
                           href={`/coins/${coin.id}`}
-                          className="flex items-center gap-2 sm:gap-3 hover:opacity-70 transition-opacity">
+                          className="flex items-center gap-2 sm:gap-3 hover:opacity-70 transition-opacity"
+                        >
                           <Image
                             src={coin.image}
                             alt={coin.name}
@@ -125,10 +126,12 @@ export default async function Dashboard() {
                       </TableCell>
                       <TableCell className="text-right">
                         <div
-                          className={`flex items-center justify-end text-xs sm:text-sm font-medium ${coin.price_change_percentage_24h >= 0
-                            ? "text-emerald-400"
-                            : "text-rose-400"
-                            }`}>
+                          className={`flex items-center justify-end text-xs sm:text-sm font-medium ${
+                            coin.price_change_percentage_24h >= 0
+                              ? "text-emerald-400"
+                              : "text-rose-400"
+                          }`}
+                        >
                           {coin.price_change_percentage_24h >= 0 ? (
                             <ArrowUpRight className="mr-0.5 h-3 w-3 sm:h-3.5 sm:w-3.5" />
                           ) : (

@@ -1,10 +1,11 @@
 "use server";
 
 import { Coin, CoinDetail } from "@/types";
+import { REVALIDATE_INTERVAL } from "@/lib/constants";
 
 async function fetchAPI<T>(endpoint: string): Promise<T> {
   const res = await fetch(`${process.env.BASE_URL}${endpoint}`, {
-    next: { revalidate: 60 }, // Revalidate every minute (ISR)
+    next: { revalidate: REVALIDATE_INTERVAL },
   });
 
   if (!res.ok) {

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Bitcoin, Menu, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { SITE_NAME, GITHUB_URL } from "@/lib/constants";
 
 export function Navbar() {
   return (
@@ -11,15 +12,16 @@ export function Navbar() {
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <Bitcoin className="h-5 w-5 sm:h-6 sm:w-6" />
             <span className="hidden font-bold sm:inline-block">
-              CryptoTracker
+              {SITE_NAME}
             </span>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
             <Link
-              href="https://github.com/mortal22soul/raftlabs-assignment"
+              href={GITHUB_URL}
               target="_blank"
               rel="noreferrer"
-              className="transition-colors hover:text-foreground/80 text-foreground/60">
+              className="transition-colors hover:text-foreground/80 text-foreground/60"
+            >
               <Github className="h-5 w-5" />
               <span className="sr-only">GitHub</span>
             </Link>
@@ -29,7 +31,8 @@ export function Navbar() {
           <SheetTrigger asChild>
             <Button
               variant="ghost"
-              className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden">
+              className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+            >
               <Menu className="h-5 w-5" />
               <span className="sr-only">Toggle Menu</span>
             </Button>
@@ -38,15 +41,16 @@ export function Navbar() {
             <div className="px-6">
               <Link href="/" className="flex items-center">
                 <Bitcoin className="mr-2 h-5 w-5" />
-                <span className="font-bold">CryptoTracker</span>
+                <span className="font-bold">{SITE_NAME}</span>
               </Link>
             </div>
             <nav className="flex flex-col gap-4 px-6 mt-8 text-sm font-medium">
               <Link
-                href="https://github.com/mortal22soul/raftlabs-assignment"
+                href={GITHUB_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="transition-colors hover:text-foreground/80 text-foreground/60 flex items-center gap-2">
+                className="transition-colors hover:text-foreground/80 text-foreground/60 flex items-center gap-2"
+              >
                 <Github className="h-4 w-4" />
                 GitHub
               </Link>
@@ -56,7 +60,7 @@ export function Navbar() {
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
           <Link href="/" className="flex md:hidden items-center space-x-2">
             <Bitcoin className="h-5 w-5" />
-            <span className="font-bold text-sm">CryptoTracker</span>
+            <span className="font-bold text-sm">{SITE_NAME}</span>
           </Link>
         </div>
       </div>

@@ -1,8 +1,9 @@
 import { MetadataRoute } from "next";
 import { getMarketData } from "@/lib/api";
+import { SITE_URL } from "@/lib/constants";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://raftlabs-assignment-sage.vercel.app";
+  const baseUrl = SITE_URL;
 
   // 1. Static Routes
   const routes = [
