@@ -4,15 +4,22 @@ A high-performance, SEO-optimized cryptocurrency dashboard built with **Next.js 
 
 ## Live Demo
 
-**[View Live Demo →](https://raftlabs-assignment-sage.vercel.app/)**
+<https://raftlabs-assignment-sage.vercel.app/>
 
-## ✨ Features
+## Screenshots
+
+|||
+|-|-|
+|![hero-1](/img/hero-1.png)|![hero-2](/img/hero-2.png)|
+|![btc](img/btc.png)|![eth](img/eth.png)|
+
+## Features
 
 ### Core Functionality
 
 - **Real-time Price Tracking** - Monitor top 20 cryptocurrencies with live price updates
 - **Interactive Charts** - 7-day price performance visualization with Recharts
-- **Smart Search** - Fast command palette search with keyboard shortcuts (⌘K)
+- **Smart Search** - Fast command palette search with keyboard shortcuts
 - **Manual Refresh** - One-click data refresh with visual feedback
 - **Fully Responsive** - Optimized for mobile, tablet, and desktop
 
@@ -57,11 +64,6 @@ A high-performance, SEO-optimized cryptocurrency dashboard built with **Next.js 
 
 ## Installation
 
-### Prerequisites
-
-- Node.js 18+
-- pnpm (recommended) or npm
-
 ### Setup
 
 1. **Clone the repository**
@@ -98,7 +100,7 @@ A high-performance, SEO-optimized cryptocurrency dashboard built with **Next.js 
 
 ## Project Structure
 
-```
+```txt
 raftlabs/
 ├── app/                     # Next.js App Router
 │   ├── coins/[id]/          # Dynamic coin detail pages
@@ -123,6 +125,7 @@ raftlabs/
 │   └── utils.ts             # Helper functions
 ├── types/                   # TypeScript types
 │   └── index.ts             # Type definitions
+|-- tests/                   # Test modules
 └── public/                  # Static assets
 ```
 
@@ -180,7 +183,7 @@ description: "Stay updated with the latest Bitcoin price...";
 
 ### URL Structure
 
-```
+```txt
 /                    # Homepage (market overview)
 /coins/{id}          # Detailed page
 /coins/ethereum      # Ethereum detail page
@@ -235,27 +238,20 @@ fetch(url, {
 
 ## Testing
 
-### Run Linting
-
 ```bash
-pnpm run lint
+pnpm test
+pnpm test:ci
 ```
 
-### Build for Production
+## Running
 
 ```bash
+pnpm lint
 pnpm build
-```
-
-### Start Production Server
-
-```bash
 pnpm start
 ```
 
-## Deployment
-
-### Vercel (Recommended)
+### Vercel
 
 1. **Push to GitHub**
 
@@ -264,13 +260,10 @@ pnpm start
    ```
 
 2. **Import to Vercel**
-   - Go to [vercel.com](https://vercel.com)
-   - Import your repository
-   - Add environment variables
-   - Deploy
 
 3. **Environment Variables**
-   ```
+
+   ```env
    API_KEY=your_coingecko_api_key
    BASE_URL=https://api.coingecko.com/api/v3/
    ```
@@ -302,8 +295,6 @@ pnpm start
 
 ### CoinGecko API
 
-- **Free Tier**: 10-30 calls/minute
-- **Our Usage**: ~60 calls/hour (well within limits)
 - **Endpoints Used**:
   - `/coins/markets` - Market overview
   - `/coins/{id}` - Coin details
@@ -314,12 +305,9 @@ pnpm start
 - Graceful error handling
 - Fallback to cached data
 
-## Future Enhancements
+## Lighthouse Reports
 
-- [ ] Price alerts
-- [ ] Portfolio tracking
-- [ ] Comparison tool
-- [ ] Historical data charts
-- [ ] Favorites/watchlist
-- [ ] Price predictions
-- [ ] News integration
+|Mobile|Desktop|
+|-|-|
+|![lighthouse-1-mobile](img/lighthouse-1-mobile.png)|![lighthouse-1-desktop](img/lighthouse-1-desktop.png)|
+|![lighthouse-2-mobile](img/lighthouse-2-mobile.png)|![lighthouse-2-desktop](img/lighthouse-2-desktop.png)|
