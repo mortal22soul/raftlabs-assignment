@@ -29,7 +29,7 @@ export function Hero() {
           <Link href="#market-table">
             <Button
               size="lg"
-              className="rounded-full h-11 px-8 text-base bg-primary hover:bg-primary/90 text-primary-foreground">
+              className="hover:cursor-pointer rounded-full h-11 px-8 text-base bg-primary hover:bg-primary/90 text-primary-foreground">
               Explore Markets <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </Link>

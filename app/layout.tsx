@@ -28,8 +28,6 @@ export const metadata: Metadata = {
 
   creator: "Aryan",
 
-  metadataBase: new URL("https://raftlabs-assignment-sage.vercel.app"),
-
   title: {
     default: "CryptoTracker - Real-time Crypto Prices & Market Insights",
     template: "%s | CryptoTracker",
@@ -57,15 +55,6 @@ export const metadata: Metadata = {
     title: "CryptoTracker - Real-time Crypto Prices & Market Insights",
     description:
       "Track live cryptocurrency prices, market charts, and historical data in real time.",
-    images: [
-      {
-        url: "/og.jpg",
-        type: "image/jpeg",
-        width: 1200,
-        height: 630,
-        alt: "CryptoTracker Dashboard Preview",
-      },
-    ],
   },
 
   twitter: {
@@ -73,7 +62,6 @@ export const metadata: Metadata = {
     title: "CryptoTracker - Real-time Crypto Prices & Market Insights",
     description:
       "Track live cryptocurrency prices, market charts, and historical data in real time.",
-    images: ["/og.jpg"],
   },
 
   icons: {
