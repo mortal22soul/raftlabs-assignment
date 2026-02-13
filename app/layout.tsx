@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
@@ -14,21 +15,64 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#111827",
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://raftlabs-assignment-sage.vercel.app"),
+
   title: {
     default: "CryptoTracker - Real-time Crypto Prices & Market Insights",
     template: "%s | CryptoTracker",
   },
+
   description:
     "Track live cryptocurrency prices, market charts, and historical data with our high-performance, server-side rendered dashboard.",
-  metadataBase: new URL("https://raftlabs-assignment-sage.vercel.app"),
+
+  alternates: {
+    canonical: "/",
+  },
+
+  manifest: "/site.webmanifest",
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://raftlabs-assignment-sage.vercel.app",
-    title: "CryptoTracker",
-    description: "Real-time Crypto Prices & Market Insights",
+    url: "/",
     siteName: "CryptoTracker",
+    title: "CryptoTracker - Real-time Crypto Prices & Market Insights",
+    description:
+      "Track live cryptocurrency prices, market charts, and historical data in real time.",
+    images: [
+      {
+        url: "/og.jpg",
+        type: "image/jpeg",
+        width: 1200,
+        height: 630,
+        alt: "CryptoTracker Dashboard Preview",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "CryptoTracker - Real-time Crypto Prices & Market Insights",
+    description:
+      "Track live cryptocurrency prices, market charts, and historical data in real time.",
+    images: ["/og.jpg"],
+  },
+
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
 };
 
@@ -40,8 +84,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
-      >
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
         <Navbar />
         <div className="flex-1">{children}</div>
         <Footer />

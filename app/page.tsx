@@ -6,6 +6,7 @@ import { ArrowUpRight, ArrowDownRight } from "lucide-react";
 import { SearchCommand } from "@/components/SearchCommand";
 import { RefreshButton } from "@/components/RefreshButton";
 import { formatCurrency, formatCompactNumber } from "@/lib/utils";
+import { Hero } from "@/components/Hero";
 import {
   Table,
   TableBody,
@@ -46,6 +47,7 @@ export default async function Dashboard() {
 
   return (
     <main className="flex flex-col items-center w-full">
+      <Hero />
       <div
         className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10"
         id="market-table"
