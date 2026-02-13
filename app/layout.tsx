@@ -36,6 +36,8 @@ export const metadata: Metadata = {
   description:
     "Track live cryptocurrency prices, market charts, and historical data with our high-performance, server-side rendered dashboard.",
 
+  metadataBase: new URL("https://raftlabs-assignment-sage.vercel.app"),
+
   alternates: {
     canonical: "/",
   },
