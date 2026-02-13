@@ -26,10 +26,10 @@ export const metadata: Metadata = {
 
   referrer: "origin-when-cross-origin",
 
-  creator: "Aryan",
+  creator: "Aryan Mehesare",
 
   title: {
-    default: "CryptoTracker - Real-time Crypto Prices & Market Insights",
+    default: "CryptoTracker - Real-time Crypto Prices and Market Insights",
     template: "%s | CryptoTracker",
   },
 
@@ -54,16 +54,20 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "/",
     siteName: "CryptoTracker",
-    title: "CryptoTracker - Real-time Crypto Prices & Market Insights",
+    title: "CryptoTracker - Real-time Crypto Prices and Market Insights",
     description:
-      "Track live cryptocurrency prices, market charts, and historical data in real time.",
+      "Track live cryptocurrency prices, market charts, and historical data with our high-performance, server-side rendered dashboard.",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "CryptoTracker - Real-time Crypto Prices & Market Insights",
+    title: "CryptoTracker - Real-time Crypto Prices and Market Insights",
     description:
-      "Track live cryptocurrency prices, market charts, and historical data in real time.",
+      "Track live cryptocurrency prices, market charts, and historical data with our high-performance, server-side rendered dashboard.",
+  },
+
+  verification: {
+    google: "_uWF6CDqz6aR_Ajx0cN0KhPh-i4orjCa9lu_hKYEvg0",
   },
 
   icons: {
@@ -79,12 +83,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <meta
-        name="google-site-verification"
-        content="_uWF6CDqz6aR_Ajx0cN0KhPh-i4orjCa9lu_hKYEvg0"
-      />
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+      >
         <Navbar />
         <div className="flex-1">{children}</div>
         <Footer />

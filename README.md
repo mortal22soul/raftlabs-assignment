@@ -6,12 +6,16 @@ A high-performance, SEO-optimized cryptocurrency dashboard built with **Next.js 
 
 <https://raftlabs-assignment-sage.vercel.app/>
 
+## Loom Walkthrough
+
+> 🎥 _[Loom video link to be added]_
+
 ## Screenshots
 
-|||
-|-|-|
-|![hero-1](/img/hero-1.png)|![hero-2](/img/hero-2.png)|
-|![btc](img/btc.png)|![eth](img/eth.png)|
+|                            |                            |
+| -------------------------- | -------------------------- |
+| ![hero-1](/img/hero-1.png) | ![hero-2](/img/hero-2.png) |
+| ![btc](img/btc.png)        | ![eth](img/eth.png)        |
 
 ## Features
 
@@ -34,8 +38,8 @@ A high-performance, SEO-optimized cryptocurrency dashboard built with **Next.js 
 ### SEO Optimization
 
 - **Dynamic Metadata** - Unique titles and descriptions for each page
-- **JSON-LD Schema** - FinancialProduct and FAQPage structured data
-- **OpenGraph Tags** - Rich social media previews
+- **JSON-LD Schema** - BreadcrumbList, Article, and ItemList structured data (rich-result eligible)
+- **OpenGraph Tags** - Rich social media previews with `article` type for coin pages
 - **Dynamic Sitemap** - Auto-generated with proper priorities
 - **Robots.txt** - Optimized for search engine crawling
 
@@ -61,6 +65,66 @@ A high-performance, SEO-optimized cryptocurrency dashboard built with **Next.js 
 ### Deployment
 
 - **Vercel** - Edge deployment with automatic optimization
+
+## Data Selection
+
+### Why Cryptocurrency Data?
+
+Cryptocurrency was chosen for its natural fit with programmatic SEO:
+
+- **High search volume** — Millions of monthly searches for coin prices and market data
+- **Dynamic data** — Prices change constantly, making ISR (60s revalidation) meaningful
+- **Structured information** — Each coin has consistent fields (price, market cap, volume, supply, description) ideal for template-based pages
+- **Well-documented API** — CoinGecko provides reliable, free-tier API access with comprehensive data
+
+### Data Source
+
+**CoinGecko API** (https://www.coingecko.com/en/api) — one of the most widely used cryptocurrency data APIs.
+
+| Endpoint         | Purpose               | Data Used                                                                   |
+| ---------------- | --------------------- | --------------------------------------------------------------------------- |
+| `/coins/markets` | Homepage market table | Price, 24h change, market cap, volume, rank, image                          |
+| `/coins/{id}`    | Coin detail pages     | All above + sparkline (7d), high/low (24h), circulating supply, description |
+
+### Data Structure
+
+Each coin generates a unique `/coins/{id}` page with:
+
+- **Identity**: Name, symbol, rank, logo
+- **Price data**: Current price, 24h high/low, 7-day sparkline chart
+- **Market data**: Market cap, trading volume, circulating supply
+- **Content**: Project description (HTML from CoinGecko, rendered server-side for SEO)
+
+## Keyword Research
+
+### Research Process
+
+1. **Identified seed keywords** using Google Keyword Planner and Ubersuggest:
+   - "bitcoin price" (~12M monthly searches)
+   - "ethereum price" (~3M)
+   - "crypto prices" (~1.5M)
+   - "cryptocurrency market cap" (~200K)
+   - "[coin name] live price" (~50K–500K per coin)
+
+2. **Analyzed competitor title patterns** from CoinGecko, CoinMarketCap, and CoinDesk
+
+3. **Selected long-tail keyword template** for programmatic pages:
+   - `{Coin} ({Symbol}) Live Price, Charts & Market Cap`
+   - This matches high-intent search queries like "BTC live price" and "Bitcoin market cap"
+
+### Keyword Application
+
+| Page       | Title Pattern                                                 | Target Keywords                                    |
+| ---------- | ------------------------------------------------------------- | -------------------------------------------------- |
+| Homepage   | "CryptoTracker - Real-time Crypto Prices and Market Insights" | crypto prices, cryptocurrency tracker, real-time   |
+| Coin pages | "{Name} ({SYM}) Live Price, Charts & Market Cap"              | [coin] price, [coin] live price, [coin] market cap |
+
+### SEO Content Strategy
+
+- **Homepage**: Targets broad keywords ("crypto prices", "market overview") with an `ItemList` schema listing the top 10 coins — eligible for carousel rich results
+- **Coin pages**: Target coin-specific long-tail keywords with dynamic `Article` schema and `BreadcrumbList` for enhanced search result display
+- **Descriptions**: Dynamically include the current price in meta descriptions for freshness signals
+- **Canonical URLs**: Set per page to prevent duplicate content issues
 
 ## Installation
 
@@ -125,7 +189,7 @@ raftlabs/
 │   └── utils.ts             # Helper functions
 ├── types/                   # TypeScript types
 │   └── index.ts             # Type definitions
-|-- tests/                   # Test modules
+├── tests/                   # Test modules
 └── public/                  # Static assets
 ```
 
@@ -177,9 +241,9 @@ description: "Stay updated with the latest Bitcoin price...";
 
 ### Structured Data
 
-- **WebSite Schema** - Homepage search action
-- **FinancialProduct Schema** - Coin detail pages
-- **FAQPage Schema** - Common questions about coins
+- **WebSite + CollectionPage + ItemList** — Homepage identifies the site and lists top 10 coins (carousel-eligible)
+- **BreadcrumbList** — Coin pages show Home → Coin Name trail in search results
+- **Article** — Coin detail pages treated as articles with headline, image, publisher, and dateModified
 
 ### URL Structure
 
@@ -307,7 +371,7 @@ pnpm start
 
 ## Lighthouse Reports
 
-|Mobile|Desktop|
-|-|-|
-|![lighthouse-1-mobile](img/lighthouse-1-mobile.png)|![lighthouse-1-desktop](img/lighthouse-1-desktop.png)|
-|![lighthouse-2-mobile](img/lighthouse-2-mobile.png)|![lighthouse-2-desktop](img/lighthouse-2-desktop.png)|
+| Mobile                                              | Desktop                                               |
+| --------------------------------------------------- | ----------------------------------------------------- |
+| ![lighthouse-1-mobile](img/lighthouse-1-mobile.png) | ![lighthouse-1-desktop](img/lighthouse-1-desktop.png) |
+| ![lighthouse-2-mobile](img/lighthouse-2-mobile.png) | ![lighthouse-2-desktop](img/lighthouse-2-desktop.png) |

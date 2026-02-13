@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Metadata } from "next";
 import { getMarketData } from "@/lib/api";
 import { ArrowUpRight, ArrowDownRight } from "lucide-react";
 import { SearchCommand } from "@/components/SearchCommand";
@@ -16,33 +15,44 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-export const metadata: Metadata = {
-  title: "CryptoTracker - Real-time Crypto Prices & Market Data",
-  description:
-    "Track live cryptocurrency prices, market charts, and historical data for the top 20 cryptocurrencies. Real-time updates with server-side rendering for optimal SEO.",
-  openGraph: {
-    title: "CryptoTracker - Real-time Crypto Prices",
-    description:
-      "Track live cryptocurrency prices and market data for top 20 coins",
-    type: "website",
-  },
-};
-
 export default async function Dashboard() {
   const coins = await getMarketData();
 
-  // JSON-LD for WebSite
+  // JSON-LD Structured Data
+  const siteUrl = "https://raftlabs-assignment-sage.vercel.app";
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "CryptoTracker",
-    url: "https://raftlabs-assignment-sage.vercel.app",
-    potentialAction: {
-      "@type": "SearchAction",
-      target:
-        "https://raftlabs-assignment-sage.vercel.app?q={search_term_string}",
-      "query-input": "required name=search_term_string",
-    },
+    "@graph": [
+      {
+        "@type": "WebSite",
+        name: "CryptoTracker",
+        url: siteUrl,
+        description:
+          "Track live cryptocurrency prices, market caps, and 24h performance for the top digital assets.",
+      },
+      {
+        "@type": "CollectionPage",
+        name: "Market Overview — Top Cryptocurrencies by Market Cap",
+        description:
+          "Live prices and performance for the top 20 cryptocurrency assets.",
+        url: siteUrl,
+        isPartOf: {
+          "@type": "WebSite",
+          name: "CryptoTracker",
+          url: siteUrl,
+        },
+        mainEntity: {
+          "@type": "ItemList",
+          numberOfItems: coins.length,
+          itemListElement: coins.slice(0, 10).map((coin, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            name: coin.name,
+            url: `${siteUrl}/coins/${coin.id}`,
+          })),
+        },
+      },
+    ],
   };
 
   return (
@@ -50,8 +60,7 @@ export default async function Dashboard() {
       <Hero />
       <div
         className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10"
-        id="market-table"
-      >
+        id="market-table">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
           <div className="w-full md:w-auto">
             <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
@@ -76,14 +85,10 @@ export default async function Dashboard() {
                     <TableHead className="w-12 sm:w-16 pl-4 sm:pl-4">
                       Rank
                     </TableHead>
-                    <TableHead className="min-w-[140px]">Asset</TableHead>
-                    <TableHead className="text-right min-w-[80px]">
-                      Price
-                    </TableHead>
-                    <TableHead className="text-right min-w-[70px]">
-                      24h
-                    </TableHead>
-                    <TableHead className="text-right hidden md:table-cell min-w-[100px] pr-4">
+                    <TableHead className="min-w-35">Asset</TableHead>
+                    <TableHead className="text-right min-w-20">Price</TableHead>
+                    <TableHead className="text-right min-w-17.5">24h</TableHead>
+                    <TableHead className="text-right hidden md:table-cell min-w-25 pr-4">
                       Market Cap
                     </TableHead>
                   </TableRow>
@@ -94,11 +99,10 @@ export default async function Dashboard() {
                       <TableCell className="text-muted-foreground text-xs sm:text-sm pl-4 sm:pl-4">
                         #{coin.market_cap_rank}
                       </TableCell>
-                      <TableCell className="min-w-[140px]">
+                      <TableCell className="min-w-35">
                         <Link
                           href={`/coins/${coin.id}`}
-                          className="flex items-center gap-2 sm:gap-3 hover:opacity-70 transition-opacity"
-                        >
+                          className="flex items-center gap-2 sm:gap-3 hover:opacity-70 transition-opacity">
                           <Image
                             src={coin.image}
                             alt={coin.name}
@@ -121,12 +125,10 @@ export default async function Dashboard() {
                       </TableCell>
                       <TableCell className="text-right">
                         <div
-                          className={`flex items-center justify-end text-xs sm:text-sm font-medium ${
-                            coin.price_change_percentage_24h >= 0
-                              ? "text-emerald-400"
-                              : "text-rose-400"
-                          }`}
-                        >
+                          className={`flex items-center justify-end text-xs sm:text-sm font-medium ${coin.price_change_percentage_24h >= 0
+                            ? "text-emerald-400"
+                            : "text-rose-400"
+                            }`}>
                           {coin.price_change_percentage_24h >= 0 ? (
                             <ArrowUpRight className="mr-0.5 h-3 w-3 sm:h-3.5 sm:w-3.5" />
                           ) : (

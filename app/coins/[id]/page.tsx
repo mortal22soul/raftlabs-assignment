@@ -17,7 +17,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 // Dynamic import for PriceChart to reduce initial bundle size
 const PriceChart = dynamic(() => import("@/components/charts/PriceChart"), {
   loading: () => (
-    <div className="h-[350px] w-full flex items-center justify-center">
+    <div className="h-87.5 w-full flex items-center justify-center">
       <div className="animate-pulse text-muted-foreground text-sm">
         Loading chart...
       </div>
@@ -49,11 +49,11 @@ export async function generateMetadata({
     title: `${name} (${coin.symbol.toUpperCase()}) Live Price, Charts & Market Cap`,
     description: `Stay updated with the latest ${name} price, which is currently ${price}. View historical charts, market capitalization, and detailed project information.`,
     alternates: {
-      canonical: `https://raftlabs-assignment-sage.vercel.app/coins/${id}`,
+      canonical: `/coins/${id}`,
     },
     openGraph: {
-      title: `${name} Live Price & Analysis`,
-      description: `Current ${name} market stats and 7-day performance chart.`,
+      title: `${name} (${coin.symbol.toUpperCase()}) Live Price, Charts & Market Cap`,
+      description: `Stay updated with the latest ${name} price, which is currently ${price}. View historical charts, market capitalization, and detailed project information.`,
       images: [
         {
           url:
@@ -65,12 +65,12 @@ export async function generateMetadata({
           alt: `${name} logo`,
         },
       ],
-      type: "website",
+      type: "article",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${name} Price Update`,
-      description: `Check out the latest stats for ${name}.`,
+      title: `${name} (${coin.symbol.toUpperCase()}) Live Price, Charts & Market Cap`,
+      description: `Stay updated with the latest ${name} price, which is currently ${price}. View historical charts, market capitalization, and detailed project information.`,
       images: [
         typeof coin.image === "string"
           ? coin.image
@@ -90,54 +90,65 @@ export default async function CoinPage({ params }: { params: { id: string } }) {
     notFound();
   }
 
-  // Create the JSON-LD object (FinancialProduct + FAQPage for richness)
-  const jsonLd = [
-    {
-      "@context": "https://schema.org",
-      "@type": "FinancialProduct",
-      name: coin.name,
-      description: coin.description.en.split(".")[0] + ".",
-      image:
-        typeof coin.image === "string"
-          ? coin.image
-          : (coin.image as { large: string }).large,
-      brand: {
-        "@type": "Brand",
-        name: "CryptoTracker",
+  // JSON-LD Structured Data — rich-result-eligible types
+  const siteUrl = "https://raftlabs-assignment-sage.vercel.app";
+  const coinImage =
+    typeof coin.image === "string"
+      ? coin.image
+      : (coin.image as { large: string }).large;
+  const rawDescription = coin.description?.en || "";
+  const shortDescription = rawDescription
+    ? rawDescription.split(".")[0] + "."
+    : `Live price and market data for ${coin.name}.`;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: `${siteUrl}/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: coin.name,
+            item: `${siteUrl}/coins/${id}`,
+          },
+        ],
       },
-      offers: {
-        "@type": "Offer",
-        price: coin.market_data.current_price.usd,
-        priceCurrency: "USD",
-      },
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: `What is the current price of ${coin.name}?`,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: `The current price of ${coin.name} is ${formatCurrency(
-              coin.market_data.current_price.usd,
-            )}.`,
+      {
+        "@type": "Article",
+        headline: `${coin.name} (${coin.symbol.toUpperCase()}) — Live Price & Market Data`,
+        description: shortDescription,
+        image: coinImage,
+        url: `${siteUrl}/coins/${id}`,
+        author: {
+          "@type": "Organization",
+          name: "CryptoTracker",
+          url: siteUrl,
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "CryptoTracker",
+          url: siteUrl,
+          logo: {
+            "@type": "ImageObject",
+            url: `${siteUrl}/favicon.ico`,
           },
         },
-        {
-          "@type": "Question",
-          name: `What is the market cap of ${coin.name}?`,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: `The market capitalization of ${coin.name} is currently ${formatCurrency(
-              coin.market_data.market_cap.usd,
-            )}.`,
-          },
+        dateModified: new Date().toISOString(),
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": `${siteUrl}/coins/${id}`,
         },
-      ],
-    },
-  ];
+      },
+    ],
+  };
 
   return (
     <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10 space-y-6">
@@ -265,7 +276,6 @@ export default async function CoinPage({ params }: { params: { id: string } }) {
           <CardContent>
             <div
               className="prose prose-sm sm:prose prose-slate dark:prose-invert max-w-none text-muted-foreground [&_a]:text-primary [&_a]:no-underline hover:[&_a]:underline"
-              // We use dangerouslySetInnerHTML because the API returns HTML links
               dangerouslySetInnerHTML={{
                 __html: coin.description.en || "No description available.",
               }}
