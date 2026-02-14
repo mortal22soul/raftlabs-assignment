@@ -12,10 +12,11 @@ A high-performance, SEO-optimized cryptocurrency dashboard built with **Next.js 
 
 ## Screenshots
 
-|                            |                            |
-| -------------------------- | -------------------------- |
-| ![hero-1](/img/hero-1.png) | ![hero-2](/img/hero-2.png) |
-| ![btc](img/btc.png)        | ![eth](img/eth.png)        |
+|                               |                               |
+| --------------------------    | --------------------------    |
+| ![hero-1](/img/hero-1.png)    | ![hero-2](/img/hero-2.png)    |
+| ![btc](img/btc.png)           | ![eth](img/eth.png)           |
+| ![mobile-1](img/mobile-1.png) | ![mobile-2](img/mobile-2.png) |
 
 ## Features
 
@@ -79,7 +80,7 @@ Cryptocurrency was chosen for its natural fit with programmatic SEO:
 
 ### Data Source
 
-**CoinGecko API** (https://www.coingecko.com/en/api) - one of the most widely used cryptocurrency data APIs.
+**CoinGecko API** (<https://www.coingecko.com/en/api>) - one of the most widely used cryptocurrency data APIs.
 
 | Endpoint         | Purpose               | Data Used                                                                   |
 | ---------------- | --------------------- | --------------------------------------------------------------------------- |
