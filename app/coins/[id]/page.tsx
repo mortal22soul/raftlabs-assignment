@@ -93,6 +93,7 @@ export default async function CoinPage({ params }: { params: { id: string } }) {
     "@graph": [
       {
         "@type": "BreadcrumbList",
+        "@id": `${SITE_URL}/coins/${id}#breadcrumb`,
         itemListElement: [
           {
             "@type": "ListItem",
@@ -128,7 +129,7 @@ export default async function CoinPage({ params }: { params: { id: string } }) {
             url: `${SITE_URL}/favicon.ico`,
           },
         },
-        dateModified: new Date().toISOString(),
+        dateModified: coin.last_updated || new Date().toISOString(),
         mainEntityOfPage: {
           "@type": "WebPage",
           "@id": `${SITE_URL}/coins/${id}`,
