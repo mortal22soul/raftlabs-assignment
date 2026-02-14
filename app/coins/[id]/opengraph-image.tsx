@@ -23,8 +23,7 @@ export default async function OGImage({ params }: { params: { id: string } }) {
           color: "#f8fafc",
           fontSize: 48,
           fontWeight: 700,
-        }}
-      >
+        }}>
         Coin Not Found
       </div>,
       { ...size },
@@ -36,8 +35,8 @@ export default async function OGImage({ params }: { params: { id: string } }) {
       ? coin.image
       : (coin.image as { large: string }).large;
 
-  const price = formatCurrency(coin.market_data.current_price.usd);
-  const change24h = coin.market_data.price_change_percentage_24h;
+  const price = formatCurrency(coin.market_data.current_price.usd) ?? 0;
+  const change24h = coin.market_data.price_change_percentage_24h ?? 0;
   const changeSign = change24h >= 0 ? "+" : "";
   const changeColor = change24h >= 0 ? "#34d399" : "#fb7185";
 
@@ -54,8 +53,7 @@ export default async function OGImage({ params }: { params: { id: string } }) {
           "linear-gradient(145deg, #0c1222 0%, #162036 50%, #1a1a3e 100%)",
         fontFamily: "sans-serif",
         color: "#f8fafc",
-      }}
-    >
+      }}>
       {/* Top: Site branding */}
       <div
         style={{
@@ -66,8 +64,7 @@ export default async function OGImage({ params }: { params: { id: string } }) {
           color: "#94a3b8",
           fontWeight: 600,
           letterSpacing: "0.5px",
-        }}
-      >
+        }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -75,10 +72,9 @@ export default async function OGImage({ params }: { params: { id: string } }) {
           viewBox="0 0 24 24"
           fill="none"
           stroke="#fff"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round">
           <path d="M11.767 19.089c4.924.868 6.14-6.025 1.216-6.894m-1.216 6.894L5.86 18.047m5.908 1.042l-.347 1.97m1.563-8.864c4.924.869 6.14-6.025 1.215-6.893m-1.215 6.893l-3.94-.694m5.155-6.2L8.29 4.26m5.908 1.042l.348-1.97M7.48 20.364l3.126-17.727" />
         </svg>
         {SITE_NAME}
@@ -90,8 +86,7 @@ export default async function OGImage({ params }: { params: { id: string } }) {
           display: "flex",
           alignItems: "center",
           gap: "48px",
-        }}
-      >
+        }}>
         {/* Coin logo */}
         <div
           style={{
@@ -104,9 +99,7 @@ export default async function OGImage({ params }: { params: { id: string } }) {
             background: "rgba(255,255,255,0.06)",
             border: "3px solid rgba(255,255,255,0.1)",
             flexShrink: 0,
-          }}
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
+          }}>
           <img
             src={coinImage}
             width={120}
@@ -122,8 +115,7 @@ export default async function OGImage({ params }: { params: { id: string } }) {
             display: "flex",
             flexDirection: "column",
             gap: "12px",
-          }}
-        >
+          }}>
           {/* Headline */}
           <div
             style={{
@@ -132,8 +124,7 @@ export default async function OGImage({ params }: { params: { id: string } }) {
               fontWeight: 800,
               lineHeight: 1.1,
               letterSpacing: "-1px",
-            }}
-          >
+            }}>
             <span>{coin.name}</span>
             <span style={{ color: "#64748b", marginLeft: "12px" }}>
               ({coin.symbol.toUpperCase()})
@@ -148,8 +139,7 @@ export default async function OGImage({ params }: { params: { id: string } }) {
               gap: "16px",
               fontSize: 36,
               fontWeight: 700,
-            }}
-          >
+            }}>
             <span>{price}</span>
             <span
               style={{
@@ -162,8 +152,7 @@ export default async function OGImage({ params }: { params: { id: string } }) {
                     : "rgba(251,113,133,0.12)",
                 padding: "4px 14px",
                 borderRadius: "8px",
-              }}
-            >
+              }}>
               {`${changeSign}${change24h.toFixed(2)}%`}
             </span>
           </div>
@@ -176,16 +165,14 @@ export default async function OGImage({ params }: { params: { id: string } }) {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-        }}
-      >
+        }}>
         <div
           style={{
             fontSize: 22,
             fontWeight: 600,
             color: "#60a5fa",
             letterSpacing: "0.3px",
-          }}
-        >
+          }}>
           View Live Charts, Market Cap &amp; Trading Data →
         </div>
         <div
@@ -193,8 +180,7 @@ export default async function OGImage({ params }: { params: { id: string } }) {
             fontSize: 18,
             color: "#475569",
             fontWeight: 500,
-          }}
-        >
+          }}>
           Powered by CoinGecko
         </div>
       </div>

@@ -8,7 +8,7 @@ A high-performance, SEO-optimized cryptocurrency dashboard built with **Next.js 
 
 ## Loom Walkthrough
 
-> 🎥 _[Loom video link to be added]_
+<https://www.loom.com/share/b36cb36aca384084936c6baa41627b55>
 
 ## Screenshots
 
