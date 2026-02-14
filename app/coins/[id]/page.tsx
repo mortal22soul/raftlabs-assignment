@@ -46,37 +46,24 @@ export async function generateMetadata({
   const name = coin.name;
   const price = formatCurrency(coin.market_data.current_price.usd);
 
+  const title = `${name} (${coin.symbol.toUpperCase()}) Price Today — Live Charts, Market Cap & Trading Data`;
+  const description = `Stay updated with the latest ${name} price, which is currently ${price}. View historical charts, market capitalization, and detailed project information.`;
+
   return {
-    title: `${name} (${coin.symbol.toUpperCase()}) Live Price, Charts & Market Cap`,
-    description: `Stay updated with the latest ${name} price, which is currently ${price}. View historical charts, market capitalization, and detailed project information.`,
+    title,
+    description,
     alternates: {
       canonical: `/coins/${id}`,
     },
     openGraph: {
-      title: `${name} (${coin.symbol.toUpperCase()}) Live Price, Charts & Market Cap`,
-      description: `Stay updated with the latest ${name} price, which is currently ${price}. View historical charts, market capitalization, and detailed project information.`,
-      images: [
-        {
-          url:
-            typeof coin.image === "string"
-              ? coin.image
-              : (coin.image as { large: string }).large,
-          width: 400,
-          height: 400,
-          alt: `${name} logo`,
-        },
-      ],
+      title,
+      description,
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${name} (${coin.symbol.toUpperCase()}) Live Price, Charts & Market Cap`,
-      description: `Stay updated with the latest ${name} price, which is currently ${price}. View historical charts, market capitalization, and detailed project information.`,
-      images: [
-        typeof coin.image === "string"
-          ? coin.image
-          : (coin.image as { large: string }).large,
-      ],
+      title,
+      description,
     },
   };
 }
