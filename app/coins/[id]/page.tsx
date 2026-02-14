@@ -46,7 +46,7 @@ export async function generateMetadata({
   const name = coin.name;
   const price = formatCurrency(coin.market_data.current_price.usd);
 
-  const title = `${name} (${coin.symbol.toUpperCase()}) Price Today — Live Charts, Market Cap & Trading Data`;
+  const title = `${name} (${coin.symbol.toUpperCase()}) Price Today - Live Charts & Market Cap`;
   const description = `Stay updated with the latest ${name} price, which is currently ${price}. View historical charts, market capitalization, and detailed project information.`;
 
   return {
@@ -78,7 +78,7 @@ export default async function CoinPage({ params }: { params: { id: string } }) {
     notFound();
   }
 
-  // JSON-LD Structured Data — rich-result-eligible types
+  // JSON-LD Structured Data - rich-result-eligible types
   const coinImage =
     typeof coin.image === "string"
       ? coin.image
@@ -110,7 +110,7 @@ export default async function CoinPage({ params }: { params: { id: string } }) {
       },
       {
         "@type": "Article",
-        headline: `${coin.name} (${coin.symbol.toUpperCase()}) — Live Price & Market Data`,
+        headline: `${coin.name} (${coin.symbol.toUpperCase()}) - Live Price & Market Data`,
         description: shortDescription,
         image: coinImage,
         url: `${SITE_URL}/coins/${id}`,

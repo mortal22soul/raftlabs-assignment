@@ -72,14 +72,14 @@ A high-performance, SEO-optimized cryptocurrency dashboard built with **Next.js 
 
 Cryptocurrency was chosen for its natural fit with programmatic SEO:
 
-- **High search volume** — Millions of monthly searches for coin prices and market data
-- **Dynamic data** — Prices change constantly, making ISR (60s revalidation) meaningful
-- **Structured information** — Each coin has consistent fields (price, market cap, volume, supply, description) ideal for template-based pages
-- **Well-documented API** — CoinGecko provides reliable, free-tier API access with comprehensive data
+- **High search volume** - Millions of monthly searches for coin prices and market data
+- **Dynamic data** - Prices change constantly, making ISR (60s revalidation) meaningful
+- **Structured information** - Each coin has consistent fields (price, market cap, volume, supply, description) ideal for template-based pages
+- **Well-documented API** - CoinGecko provides reliable, free-tier API access with comprehensive data
 
 ### Data Source
 
-**CoinGecko API** (https://www.coingecko.com/en/api) — one of the most widely used cryptocurrency data APIs.
+**CoinGecko API** (https://www.coingecko.com/en/api) - one of the most widely used cryptocurrency data APIs.
 
 | Endpoint         | Purpose               | Data Used                                                                   |
 | ---------------- | --------------------- | --------------------------------------------------------------------------- |
@@ -121,7 +121,7 @@ Each coin generates a unique `/coins/{id}` page with:
 
 ### SEO Content Strategy
 
-- **Homepage**: Targets broad keywords ("crypto prices", "market overview") with an `ItemList` schema listing the top 10 coins — eligible for carousel rich results
+- **Homepage**: Targets broad keywords ("crypto prices", "market overview") with an `ItemList` schema listing the top 10 coins - eligible for carousel rich results
 - **Coin pages**: Target coin-specific long-tail keywords with dynamic `Article` schema and `BreadcrumbList` for enhanced search result display
 - **Descriptions**: Dynamically include the current price in meta descriptions for freshness signals
 - **Canonical URLs**: Set per page to prevent duplicate content issues
@@ -241,9 +241,9 @@ description: "Stay updated with the latest Bitcoin price...";
 
 ### Structured Data
 
-- **WebSite + CollectionPage + ItemList** — Homepage identifies the site and lists top 10 coins (carousel-eligible)
-- **BreadcrumbList** — Coin pages show Home → Coin Name trail in search results
-- **Article** — Coin detail pages treated as articles with headline, image, publisher, and dateModified
+- **WebSite + CollectionPage + ItemList** - Homepage identifies the site and lists top 10 coins (carousel-eligible)
+- **BreadcrumbList** - Coin pages show Home → Coin Name trail in search results
+- **Article** - Coin detail pages treated as articles with headline, image, publisher, and dateModified
 
 ### URL Structure
 

@@ -31,7 +31,7 @@ export default async function Dashboard() {
       },
       {
         "@type": "CollectionPage",
-        name: "Market Overview — Top Cryptocurrencies by Market Cap",
+        name: "Market Overview - Top Cryptocurrencies by Market Cap",
         description:
           "Live prices and performance for the top 20 cryptocurrency assets.",
         url: SITE_URL,
